@@ -64,8 +64,11 @@ public class Proiect2 extends JFrame {
                     stapan.setStatus(1);
 
                 pacient.add(stapan);
+<<<<<<< HEAD
                 //afisatre fereastra modala
                 JOptionPane.showMessageDialog(null,"Adaugare cu succes","FEREASTRA CONFIRMARE",JOptionPane.INFORMATION_MESSAGE);
+=======
+>>>>>>> 92ccde9d284b749fa4ac655654d6fc11cc49ff95
             }
 
         });
