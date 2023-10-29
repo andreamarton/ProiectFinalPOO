@@ -13,7 +13,6 @@ public class MediciCabVet extends JFrame{
     private JRadioButton ButonRadio1;
     private JRadioButton ButonRadio2;
 
-    private Proiect2 proiect2frame;
     public MediciCabVet(int statusMed)
     {
         this.statusMed=statusMed;
