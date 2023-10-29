@@ -8,7 +8,6 @@ import java.awt.event.ActionListener;
 public class MediciCabVet extends JFrame{
     private  int statusMed;
     private JPanel MyPanel2;
-    private JButton LogIn;
     private JRadioButton ButonRadio3;
     private JRadioButton ButonRadio1;
     private JRadioButton ButonRadio2;
