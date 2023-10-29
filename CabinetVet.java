@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// test
-=======
->>>>>>> 92ccde9d284b749fa4ac655654d6fc11cc49ff95
 package cabinetVeterinar;
 public class CabinetVet  {
 
@@ -49,7 +45,3 @@ public class CabinetVet  {
         this.codCip=newCodCip;
     }
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> 92ccde9d284b749fa4ac655654d6fc11cc49ff95
