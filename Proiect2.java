@@ -30,8 +30,9 @@ public class Proiect2 extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MyPanel = new JPanel();
-        MyPanel.setBackground(Color.LIGHT_GRAY);
+        MyPanel.setBackground(Color.LIGHT_GRAY); //setarea culorii pt cab vet
         MyPanel.setLayout(new GridLayout(10, 2));
+        MyPanel.setBounds(100, 100, 75, 25);
 
         ButonAdaugare = new JButton("Adauga Pacient");
         NumeStapan = new JLabel("Nume Stapan:");
@@ -44,6 +45,7 @@ public class Proiect2 extends JFrame {
         CodCip = new JLabel("Cod Cip:");
         codCipTF = new JTextField();
         AfisarePacientiTF = new JList();
+
 
         MyPanel.add(NumeStapan);
         MyPanel.add(NumeStapanTF);
@@ -63,7 +65,6 @@ public class Proiect2 extends JFrame {
         ButtonGroup statusGroup = new ButtonGroup();
         statusGroup.add(TipConsult);
         statusGroup.add(TipInternat);
-
 
         ButonAdaugare.addActionListener(new ActionListener() {
             @Override
@@ -85,7 +86,7 @@ public class Proiect2 extends JFrame {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                          //  AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
+                          //AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
                         }
                     });
                 }
@@ -104,7 +105,6 @@ public class Proiect2 extends JFrame {
                         @Override
                         public void run() {
                            // AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
-
                         }
                     });
                 }
@@ -149,9 +149,9 @@ public class Proiect2 extends JFrame {
                     sb.append(cab.getName());
                     sb.append(" specie: ");
                     sb.append(cab.getSpecieAnimal());
-                    sb.append(" status: ");
+                    sb.append("  status: ");
                     sb.append(cab.getStatus());
-                    sb.append("numarul cipului: ");
+                    sb.append("  numarul cipului: ");
                     sb.append(cab.getCodCip());
                     listaPacienti.add(sb.toString());
                 }
@@ -161,6 +161,6 @@ public class Proiect2 extends JFrame {
         add(MyPanel);
         pack();
         setLocationRelativeTo(null);
-        setVisible(true);
+        setVisible(false);
     }
 }
