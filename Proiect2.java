@@ -28,6 +28,7 @@ public class Proiect2 extends JFrame {
     private boolean ok1 =false;
     private boolean ok2=false;
     private boolean ok3=false;
+
     public Proiect2(int statusMed) {
 
         setTitle("CABINET VETERINAR");
@@ -35,8 +36,9 @@ public class Proiect2 extends JFrame {
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MyPanel = new JPanel();
-        MyPanel.setBackground(Color.LIGHT_GRAY); //setarea culorii pt cab vet
-        MyPanel.setLayout(new GridLayout(10, 2));
+        MyPanel.setBackground(Color.lightGray); //setarea culorii pt cab vet
+        MyPanel.setLayout(new GridLayout(7, 2));
+        MyPanel.setFont(new Font("Times New Roman", Font.BOLD, 40));
         MyPanel.setBounds(100, 100, 75, 25);
 
         ButonAdaugare = new JButton("Adauga Pacient");
@@ -51,6 +53,47 @@ public class Proiect2 extends JFrame {
         codCipTF = new JTextField();
         AfisarePacientiTF = new JList();
 
+        //alegerea culorii pentru casetele constante scrise
+        TipConsult.setForeground(Color.blue);
+        TipInternat.setForeground(Color.blue);
+        ButonAdaugare.setForeground(Color.red);
+        NumeStapan.setForeground(Color.black);
+        SpecieAnimal.setForeground(Color.black);
+        Status.setForeground(Color.black);
+        CodCip.setForeground(Color.black);
+        AfisareIntroduceri.setForeground(Color.blue);
+
+        NumeStapanTF.setForeground(Color.black);
+        SpecieAnimalTF.setForeground(Color.white);
+        Status.setForeground(Color.black);
+        codCipTF.setForeground(Color.GRAY);
+        AfisarePacientiTF.setForeground(Color.white);
+
+        //setarea culorii fundalului pentru casetele de completare
+        codCipTF.setBackground(Color.BLACK);
+        AfisarePacientiTF.setBackground(Color.black);
+        ButonAdaugare.setBackground(Color.white);
+        NumeStapanTF.setBackground(Color.LIGHT_GRAY);
+        SpecieAnimalTF.setBackground(Color.black);
+
+        //modificarea fontului scrisului static
+        NumeStapan.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        SpecieAnimal.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        CodCip.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        Status.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+        AfisareIntroduceri.setFont(new Font("Arial", Font.BOLD, 15));
+        ButonAdaugare.setFont(new Font("Arial", Font.BOLD, 15));
+        //modif scrisului pe care il vom adauga noi
+        codCipTF.setFont(new Font("Arial", Font.BOLD, 18));
+        NumeStapanTF.setFont(new Font("DejaVu Sans Mono", Font.PLAIN, 18));
+        SpecieAnimalTF.setFont(new Font("Monaco", Font.ITALIC, 18));
+        AfisarePacientiTF.setFont(new Font("Times New Roman", Font.PLAIN, 18));
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        MyPanel = new JPanel();
+        MyPanel.setBackground(Color.LIGHT_GRAY); //setarea culorii pt cab vet
+        MyPanel.setLayout(new GridLayout(10, 2));
+        MyPanel.setBounds(100, 100, 75, 25);
 
         MyPanel.add(NumeStapan);
         MyPanel.add(NumeStapanTF);
@@ -58,11 +101,11 @@ public class Proiect2 extends JFrame {
         MyPanel.add(SpecieAnimalTF);
         MyPanel.add(Status);
         MyPanel.add(TipConsult);
-        MyPanel.add(new JLabel()); // Add an empty label for spacing
+        MyPanel.add(new JLabel()); //empty label for spacing
         MyPanel.add(TipInternat);
         MyPanel.add(CodCip);
         MyPanel.add(codCipTF);
-        MyPanel.add(new JLabel()); // Add an empty label for spacing
+        MyPanel.add(new JLabel()); //empty label for spacing
         MyPanel.add(ButonAdaugare);
         MyPanel.add(AfisarePacientiTF);
         MyPanel.add(AfisareIntroduceri);
@@ -183,7 +226,20 @@ public class Proiect2 extends JFrame {
                     JOptionPane.showMessageDialog(null,"Eroare de salvare a  datelor in fisier","EROARE",JOptionPane.ERROR_MESSAGE);
                     //mesaj eroare
                 }
+                    ///scrierea datelor intr-un fisier text
+                    try {
+                        FileWriter fileWriter = new FileWriter("pacienti.txt");
+                        PrintWriter printWriter = new PrintWriter(fileWriter);
+                        for (String patientInfo : listaPacienti) {
+                            printWriter.println(patientInfo);
+                        }
+                        printWriter.close();
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(null,"Eroare de salvare a  datelor in fisier","EROARE",JOptionPane.ERROR_MESSAGE);
+                        //mesaj eroare
+                    }
             }
+
         });
         add(MyPanel);
         pack();

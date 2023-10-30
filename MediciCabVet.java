@@ -5,17 +5,35 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MediciCabVet extends JFrame{
+public class MediciCabVet extends JFrame implements LoginInterface{
     private  int statusMed;
     private JPanel MyPanel2;
     private JRadioButton ButonRadio3;
     private JRadioButton ButonRadio1;
     private JRadioButton ButonRadio2;
     private JButton LogIn;
-
+    //metoda login
+    @Override
+    public void login() {
+        if (ButonRadio1.isSelected()) {
+            statusMed = 1;
+        } else if (ButonRadio2.isSelected()) {
+            statusMed = 2;
+        } else if (ButonRadio3.isSelected()) {
+            statusMed = 3;
+        }
+        Proiect2 frame = new Proiect2(statusMed);
+        frame.setVisible(true);
+        JOptionPane.showMessageDialog(null, "Logare cu succes", "LOG IN", JOptionPane.INFORMATION_MESSAGE);
+        dispose();
+    }
     public MediciCabVet(int statusMed)
     {
         this.statusMed=statusMed;
+    }
+    public String toString()
+    {
+        return "codul doctorului desemnat pacientului "+ statusMed;
     }
     public MediciCabVet()
     {
@@ -55,17 +73,8 @@ public class MediciCabVet extends JFrame{
         LogIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(ButonRadio1.isSelected())
-                    statusMed=1;
-                if(ButonRadio2.isSelected())
-                    statusMed=2;
-                if(ButonRadio3.isSelected())
-                    statusMed=3;
-                Proiect2 frame = new Proiect2(statusMed);
-                frame.setVisible(true);
-                //fereastra ce apare dupa logarea cu succes
-                JOptionPane.showMessageDialog(null,"Logare cu succes","LOG IN",JOptionPane.INFORMATION_MESSAGE);
-                dispose();
+
+                login();
             }
         });
         ButonRadio1.addActionListener(new ActionListener() {
@@ -92,4 +101,7 @@ public class MediciCabVet extends JFrame{
         pack();
         setVisible(true);
     }
+
+
+
 }

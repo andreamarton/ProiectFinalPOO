@@ -1,4 +1,3 @@
-
 package cabinetVeterinar;
 public class CabinetVet  {
 
@@ -45,9 +44,6 @@ public class CabinetVet  {
     public void setCodCip(String newCodCip){
         this.codCip=newCodCip;
     }
-    public String toString()
-    {
-        return "Nume stapan "+numeStapan+ " specie animal: "+specieAnimal+ " status: "+status+" codul cipului: "+codCip;
-    }
+
 }
 
