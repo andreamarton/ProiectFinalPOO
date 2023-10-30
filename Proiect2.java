@@ -17,21 +17,26 @@ public class Proiect2 extends JFrame {
     private JLabel Status;
     private JRadioButton TipConsult;
     private JRadioButton TipInternat;
-    private JTextField AfisarePacientiTF;
+    private JList AfisarePacientiTF;
     private JButton AfisareIntroduceri;
     private JLabel CodCip;
     private JTextField codCipTF;
-    public List<CabinetVet> pacient = new ArrayList<>();
-
+    public List<CabinetVet> pacient = new ArrayList<>();///lista pacientilor
+    private boolean ok1 =false;
+    private boolean ok2=false;
+    private boolean ok3=false;
     public Proiect2(int statusMed) {
 
         setTitle("CABINET VETERINAR");
-        setSize(1000, 600);
+
         setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         MyPanel = new JPanel();
+        MyPanel.setBackground(Color.LIGHT_GRAY); //setarea culorii pt cab vet
         MyPanel.setLayout(new GridLayout(10, 2));
+        MyPanel.setBounds(100, 100, 75, 25);
 
+        ButonAdaugare = new JButton("Adauga Pacient");
         NumeStapan = new JLabel("Nume Stapan:");
         NumeStapanTF = new JTextField();
         SpecieAnimal = new JLabel("Specie Animal:");
@@ -41,8 +46,8 @@ public class Proiect2 extends JFrame {
         TipInternat = new JRadioButton("Internat");
         CodCip = new JLabel("Cod Cip:");
         codCipTF = new JTextField();
-        AfisarePacientiTF = new JTextField();
-        AfisarePacientiTF.setEditable(false);
+        AfisarePacientiTF = new JList();
+
 
         MyPanel.add(NumeStapan);
         MyPanel.add(NumeStapanTF);
@@ -63,8 +68,6 @@ public class Proiect2 extends JFrame {
         statusGroup.add(TipConsult);
         statusGroup.add(TipInternat);
 
-        ButonAdaugare = new JButton("Adauga Pacient");
-
         ButonAdaugare.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,19 +76,20 @@ public class Proiect2 extends JFrame {
                     if (NumeStapanTF.getText().isEmpty())
                         throw new InvalidNameException("INTRODUCETI TOATE DATELE");
                     else {
+                        //exceptie de a nu adauga cifre in campul "nume"
                         if(!NumeStapanTF.getText().matches("[aA-zZ]+$")) {
                             throw new InvalidNameException("NU INTRODUCETI DECAT LITERE LA NUME");
                         }
-                        else
+                        else {
+                            ok1=true;
                             stapan.setName(NumeStapanTF.getText());
-
+                        }
                     }
                 }catch (InvalidNameException a) {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
-
+                                JOptionPane.showMessageDialog(null,a.getMessage(),"EROARE",JOptionPane.ERROR_MESSAGE);
                         }
                     });
                 }
@@ -93,17 +97,20 @@ public class Proiect2 extends JFrame {
                     if (SpecieAnimalTF.getText().isEmpty())
                         throw new InvalidNameException("INTRODUCETI TOATE DATELE");
                     else {
+                        //exceptie in cazul in care care introducemm cifre in acest camp
                         if(!SpecieAnimalTF.getText().matches("[aA-zZ]+$")) {
                             throw new InvalidNameException("NU INTRODUCETI DECAT LITERE LA SPECIE");
                         }
-                        stapan.setSpecieAnimal(SpecieAnimalTF.getText());
+                        else {
+                            ok2=true;
+                            stapan.setSpecieAnimal(SpecieAnimalTF.getText());
+                        }
                     }
                 }catch (InvalidNameException a) {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
-
+                            JOptionPane.showMessageDialog(null,a.getMessage(),"EROARE",JOptionPane.ERROR_MESSAGE);
                         }
                     });
                 }
@@ -111,16 +118,20 @@ public class Proiect2 extends JFrame {
                     if (codCipTF.getText().isEmpty())
                         throw new InvalidNameException("INTRODUCETI TOATE DATELE"); //in caz ca nu s-a introdus nimic
                     else {
+                        //validare date
                         if(!codCipTF.getText().matches("[0-9]+$")) {
                             throw new InvalidNameException("NU INTRODUCETI DECAT CIFRE LA CIP");
                         }
-                        stapan.setCodCip(codCipTF.getText());///se face citirea codului
+                        else {
+                            ok3=true;
+                            stapan.setCodCip(codCipTF.getText());///se face citirea codului
+                        }
                     }
                 }catch (InvalidNameException a) {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
+                            JOptionPane.showMessageDialog(null,a.getMessage(),"EROARE",JOptionPane.ERROR_MESSAGE);
 
                         }
                     });
@@ -133,46 +144,35 @@ public class Proiect2 extends JFrame {
 
                 pacient.add(stapan);
                 //Fereastra de mesaj-modala
-                JOptionPane.showMessageDialog(null,"Adaugare cu succes","FEREASTRA CONFIRMARE",JOptionPane.INFORMATION_MESSAGE);
+                if(ok1 & ok2 & ok3)
+                    JOptionPane.showMessageDialog(null,"Adaugare cu succes","FEREASTRA CONFIRMARE",JOptionPane.INFORMATION_MESSAGE);
             }
         });
         AfisareIntroduceri.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                final String listaAf="LISTA DATE INTRODUSE: ";
-                StringBuffer sb;
-                sb = new StringBuffer();
-                for(int i=0;i<pacient.size();i++)
-                {
-                    sb.append(listaAf);
+                ArrayList<String> listaPacienti = new ArrayList<>();
+                MediciCabVet m1=new MediciCabVet();
+                //afisarea listei cu toti pacientii
+                for (CabinetVet cab : pacient){
+                    StringBuffer sb = new StringBuffer();
                     sb.append("Stapan: ");
-                    sb.append(pacient.get(i).getName());
+                    sb.append(cab.getName());
                     sb.append(" specie: ");
-                    sb.append(pacient.get(i).getSpecieAnimal());
-                    sb.append(" status: ");
-                    sb.append(pacient.get(i).getStatus());
-                    sb.append("numarul cipului: ");
-                    sb.append(pacient.get(i).getCodCip());
-                    sb.append((System.lineSeparator()));
+                    sb.append(cab.getSpecieAnimal());
+                    sb.append("  status: ");
+                    sb.append(cab.getStatus());
+                    sb.append("  numarul cipului: ");
+                    sb.append(cab.getCodCip());
+                    listaPacienti.add(sb.toString());
+                    sb.append(m1);
                 }
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        AfisarePacientiTF.setText(String.valueOf(sb));
-
-                    }
-                });
+                AfisarePacientiTF.setListData(listaPacienti.toArray());
             }
         });
         add(MyPanel);
         pack();
         setLocationRelativeTo(null);
-        setVisible(true);
-    }
-    public static void main(String [] args) {
-        new MediciCabVet();
-
-        Proiect2 frame = new Proiect2(0);
-        frame.setVisible(true);
+        setVisible(false);
     }
 }

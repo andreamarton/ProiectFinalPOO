@@ -1,6 +1,6 @@
+
 package cabinetVeterinar;
 public class CabinetVet  {
-
 
     public String numeStapan;
     public String specieAnimal;
@@ -46,3 +46,4 @@ public class CabinetVet  {
         this.codCip=newCodCip;
     }
 }
+
