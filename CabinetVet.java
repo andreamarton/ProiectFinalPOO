@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
 package cabinetVeterinar;
 public class CabinetVet  {
 
@@ -46,4 +49,7 @@ public class CabinetVet  {
         this.codCip=newCodCip;
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
