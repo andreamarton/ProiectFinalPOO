@@ -101,7 +101,4 @@ public class MediciCabVet extends JFrame implements LoginInterface{
         pack();
         setVisible(true);
     }
-
-
-
 }
