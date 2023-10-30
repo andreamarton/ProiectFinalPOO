@@ -46,4 +46,7 @@ public class CabinetVet  {
     }
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
