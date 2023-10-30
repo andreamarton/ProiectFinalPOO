@@ -17,10 +17,6 @@ public class MediciCabVet extends JFrame{
     {
         this.statusMed=statusMed;
     }
-    public  String toString()
-    {
-        return statusMed+" : cod doctor";
-    }
     public MediciCabVet()
     {
         setTitle("LOG IN");

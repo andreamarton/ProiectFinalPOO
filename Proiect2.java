@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 public class Proiect2 extends JFrame {
@@ -168,6 +171,18 @@ public class Proiect2 extends JFrame {
                     sb.append(m1);
                 }
                 AfisarePacientiTF.setListData(listaPacienti.toArray());
+                ///scrierea datelor intr-un fisier text
+                try {
+                    FileWriter fileWriter = new FileWriter("pacienti.txt");
+                    PrintWriter printWriter = new PrintWriter(fileWriter);
+                    for (String patientInfo : listaPacienti) {
+                        printWriter.println(patientInfo);
+                    }
+                    printWriter.close();
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(null,"Eroare de salvare a  datelor in fisier","EROARE",JOptionPane.ERROR_MESSAGE);
+                    //mesaj eroare
+                }
             }
         });
         add(MyPanel);
