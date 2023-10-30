@@ -6,4 +6,8 @@ public class Main {
         Proiect2 frame = new Proiect2(0);
         frame.setVisible(false);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9

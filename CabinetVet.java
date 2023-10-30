@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
 package cabinetVeterinar;
 public class CabinetVet  {
 
@@ -50,4 +53,7 @@ public class CabinetVet  {
         return "Nume stapan "+numeStapan+ " specie animal: "+specieAnimal+ " status: "+status+" codul cipului: "+codCip;
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9

@@ -25,9 +25,13 @@ public class Proiect2 extends JFrame {
     private JLabel CodCip;
     private JTextField codCipTF;
     public List<CabinetVet> pacient = new ArrayList<>();///lista pacientilor
+<<<<<<< HEAD
     private boolean ok1 =false;
     private boolean ok2=false;
     private boolean ok3=false;
+=======
+
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
     public Proiect2(int statusMed) {
 
         setTitle("CABINET VETERINAR");
@@ -92,7 +96,11 @@ public class Proiect2 extends JFrame {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
+<<<<<<< HEAD
                                 JOptionPane.showMessageDialog(null,a.getMessage(),"EROARE",JOptionPane.ERROR_MESSAGE);
+=======
+                          //AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
                         }
                     });
                 }
@@ -113,7 +121,11 @@ public class Proiect2 extends JFrame {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
+<<<<<<< HEAD
                             JOptionPane.showMessageDialog(null,a.getMessage(),"EROARE",JOptionPane.ERROR_MESSAGE);
+=======
+                           // AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
                         }
                     });
                 }
@@ -121,7 +133,11 @@ public class Proiect2 extends JFrame {
                     if (codCipTF.getText().isEmpty())
                         throw new InvalidNameException("INTRODUCETI TOATE DATELE"); //in caz ca nu s-a introdus nimic
                     else {
+<<<<<<< HEAD
                         //validare date
+=======
+                        //exceptia in care adaugam litere in loc de cifre
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
                         if(!codCipTF.getText().matches("[0-9]+$")) {
                             throw new InvalidNameException("NU INTRODUCETI DECAT CIFRE LA CIP");
                         }
@@ -134,7 +150,11 @@ public class Proiect2 extends JFrame {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
+<<<<<<< HEAD
                             JOptionPane.showMessageDialog(null,a.getMessage(),"EROARE",JOptionPane.ERROR_MESSAGE);
+=======
+                           // AfisarePacientiTF.setText(String.valueOf(a.getMessage()));
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
 
                         }
                     });
@@ -147,16 +167,24 @@ public class Proiect2 extends JFrame {
 
                 pacient.add(stapan);
                 //Fereastra de mesaj-modala
+<<<<<<< HEAD
                 if(ok1 & ok2 & ok3)
                     JOptionPane.showMessageDialog(null,"Adaugare cu succes","FEREASTRA CONFIRMARE",JOptionPane.INFORMATION_MESSAGE);
+=======
+                JOptionPane.showMessageDialog(null,"Adaugare cu succes","FEREASTRA CONFIRMARE",JOptionPane.INFORMATION_MESSAGE);
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
             }
         });
         AfisareIntroduceri.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> listaPacienti = new ArrayList<>();
+<<<<<<< HEAD
                 MediciCabVet m1=new MediciCabVet();
                 //afisarea listei cu toti pacientii
+=======
+                //crearea unei liste cu toti pacientii
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
                 for (CabinetVet cab : pacient){
                     StringBuffer sb = new StringBuffer();
                     sb.append("Stapan: ");
@@ -168,7 +196,10 @@ public class Proiect2 extends JFrame {
                     sb.append("  numarul cipului: ");
                     sb.append(cab.getCodCip());
                     listaPacienti.add(sb.toString());
+<<<<<<< HEAD
                     sb.append(m1);
+=======
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
                 }
                 AfisarePacientiTF.setListData(listaPacienti.toArray());
                 ///scrierea datelor intr-un fisier text
@@ -190,4 +221,8 @@ public class Proiect2 extends JFrame {
         setLocationRelativeTo(null);
         setVisible(false);
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 407dd9677af1cd1dedbc9df25b4d492aa785b0a9
